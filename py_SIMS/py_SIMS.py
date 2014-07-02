@@ -8,19 +8,19 @@ class Person():
         self.lover = lover
         self.salary = salary
     def tell(self):
-        print "**********\n[John] My name is %s, I'm %s years old." % (self.name, self.age)
+        print "**********\n[%s] My name is %s, I'm %s years old." % (self.name, self.name, self.age)
     def learn(self, school):
         self.school = school
-        print "[John] I learned course at %s." % self.school
+        print "[%s] I learned course at %s." % (self.name, self.school)
     def interview(self, company):
         self.company = company
-        print "[John] So, I got an interview chance from: %s." % self.company
+        print "[%s] So, I got an interview chance from: %s." % (self.name, self.company)
     def change_work(self, company):
         self.company = company
-        print "[John] I got a new job at %s." % self.company
+        print "[%s] I got a new job at %s." % (self.name, self.company)
     def add_salary(self, salary):
         self.salary = salary
-        print "[John] My salary is: %s now." % self.salary
+        print "[%s] My salary is: %s now." % (self.name, self.salary)
 
 class School():
     def __init__(self, name):
@@ -100,6 +100,26 @@ def f_john():
     cont()
     print "[John] I told her..."
 
+def f_peter():
+    name = 'Peter'
+    print "**********\n[System] Hi master, you are '%s' now, let me tell your new life..." % name.upper()
+    sex = 'Male'
+    age = 26
+    lover = 'Liz'
+    p_ds = Person(name, sex, age, lover)
+
+    p_ds.tell()
+
+def f_liz():
+    name = 'Liz'
+    print "**********\n[System] Hi master, you are '%s' now, let me tell your new life..." % name.upper()
+    sex = 'Female'
+    age = 26
+    lover = 'Liz'
+    p_ds = Person(name, sex, age, lover)
+
+    p_ds.tell()
+
 def main():
     print '''
 ***Welcome to SIMS***
@@ -114,21 +134,14 @@ You can play following role:
         cmd = raw_input("Role: ").strip().lower()
         if len(cmd) == 0: continue
         elif cmd == 'j':
-            #print 'GO John'
             f_john()
         elif cmd == 'p':
-            print 'GO Peter'
+            f_peter()
         elif cmd == 'l':
-            print 'GO Liz'
+            f_liz()
         elif cmd == 'q':
             print 'See you next time.'
             break
-
-
-    #p_gfs = Person('Peter', 'm', 26)
-    #p_bfm = Person('Liz', 'f', 26)
-    #p_gfs.tell()
-    #p_bfm.tell()
 
 if __name__ == '__main__':
     main()
